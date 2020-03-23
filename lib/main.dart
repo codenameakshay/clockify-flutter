@@ -55,41 +55,57 @@ class _HomePageState extends State<HomePage> {
           padding: EdgeInsets.zero,
           children: <Widget>[
             DrawerHeader(
-              child: Image.network(
-                'https://avatars2.githubusercontent.com/u/60510869?s=460&u=ea7872a9aa9189cfc2b0910a51e4b83d458709a3&v=4',
+              child: Image.asset(
+                'assets/images/logo.jfif',
               ),
               decoration: BoxDecoration(
                 gradient: LinearGradient(
-                  begin: Alignment.topRight,
-                  end: Alignment.bottomLeft,
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
                   colors: [
-                    Colors.blue,
-                    Colors.cyanAccent[200],
+                    Color.fromARGB(255, 60, 140, 231),
+                    Color.fromARGB(255, 0, 234, 255),
                   ],
                 ),
               ),
+            ),
+            Divider(
+              height: 2.0,
             ),
             ListTile(
               title: Center(
                 child: Text('CodeNameAKshay'),
               ),
-              onTap: () {},
+              onTap: () {
+                // Navigator.pop(context);
+              },
             ),
-            Center(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Text('Enable Dark Mode'),
-                  Switch(
-                    value: themeProvider.getDarkMode(),
-                    onChanged: (value) {
-                      setState(() {
-                        themeProvider.changeDarkMode(value);
-                      });
-                    },
-                  ),
-                ],
+            Divider(
+              height: 2.0,
+            ),
+            Builder(
+              builder: (context) => ListTile(
+                title: Text('Toggle Dark mode'),
+                leading: Icon(Icons.brightness_4),
+                onTap: () {
+                  setState(() {
+                    themeProvider.changeDarkMode(!themeProvider.isDarkMode);
+                  });
+                  Navigator.pop(context);
+                },
+                trailing: Switch(
+                  value: themeProvider.getDarkMode(),
+                  onChanged: (value) {
+                    setState(() {
+                      themeProvider.changeDarkMode(value);
+                    });
+                    Navigator.pop(context);
+                  },
+                ),
               ),
+            ),
+            Divider(
+              height: 2.0,
             ),
             Builder(
               builder: (context) => ListTile(
@@ -97,8 +113,12 @@ class _HomePageState extends State<HomePage> {
                 leading: Icon(Icons.access_time),
                 onTap: () {
                   changeIsBinary();
+                  Navigator.pop(context);
                 },
               ),
+            ),
+            Divider(
+              height: 2.0,
             ),
           ],
         ),
@@ -146,8 +166,8 @@ class _DigitalClockState extends State<DigitalClock> {
         builder: (BuildContext context, BoxConstraints constraints) {
           return Container(
             padding: EdgeInsets.only(
-                left: constraints.maxWidth * 0.23,
-                right: constraints.maxWidth * 0.23),
+                left: constraints.maxWidth * 0.22,
+                right: constraints.maxWidth * 0.22),
             // width: constraints.maxWidth*0.8,
             // height: constraints.maxHeight*0.8,
             child: Row(
@@ -355,7 +375,8 @@ class ClockColumn extends StatelessWidget {
           Container(
             child: Text(
               title,
-              style: Theme.of(context).textTheme.display1,
+              style: TextStyle(
+                  fontSize: height * 0.060, fontWeight: FontWeight.w200),
             ),
           )
         ],
@@ -369,10 +390,10 @@ class ClockColumn extends StatelessWidget {
           return AnimatedContainer(
             duration: Duration(milliseconds: 475),
             curve: Curves.ease,
-            height: height * 0.08,
-            width: width * 0.08,
+            height: height * 0.079,
+            width: width * 0.079,
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.all(Radius.circular(100)),
+              borderRadius: BorderRadius.all(Radius.circular(width * 0.05)),
               color: isActive
                   ? color
                   : idx < 4 - rows
