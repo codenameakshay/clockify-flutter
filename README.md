@@ -4,7 +4,7 @@ A Flutter based binary and analog clock that supports auto rotation, dark mode a
 
 # Screenshot
 
-![Portrait mode demo](examples/demo.gif)
+![Portrait mode demo](examples/Demo.gif)
 
 # Download
 
