@@ -21,12 +21,12 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  // This widget is the root of your application.
+
   @override
   Widget build(BuildContext context) {
     final themeProvider = Provider.of<DynamicTheme>(context);
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Clockify',
       theme: themeProvider.getDarkMode() ? ThemeData.dark() : ThemeData.light(),
       home: HomePage(),
     );
